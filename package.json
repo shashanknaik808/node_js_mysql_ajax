@@ -1,0 +1,28 @@
+{
+  "name": "node_js_mysql_ajax",
+  "version": "1.0.0",
+  "description": "Using AJAX in Node JS & MySQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shashanknaik808/node_js_mysql_ajax.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shashanknaik808/node_js_mysql_ajax/issues"
+  },
+  "homepage": "https://github.com/shashanknaik808/node_js_mysql_ajax#readme",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  }
+}
