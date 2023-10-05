@@ -27,6 +27,7 @@
                     <td><%- student[i].MOBILE %></td>
                     <td>
                         <a href="#" onclick="delete_record(this, <%- student[i].ID %> )">Delete</a>
+                        <a href="/update-student?id=<%- student[i].ID %>">Update</a>
                     </td>
                 </tr>
                 <% } %>
