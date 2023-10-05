@@ -23,8 +23,20 @@ module.exports.insertValues = (req, res) => {
         if (err) return console.log("Error while inserted data " + err);
         res.send("Data inserted successfull");
 
-        
+
     });
 
+
+}
+
+module.exports.getStudent = (req, res) => {
+
+    let sql = "SELECT * FROM STUDENTS";
+    
+    connection.query(sql, (err, result) => {
+        if (err) return console.log(err);
+        res.render("student", { student: result });
+
+    })
 
 }
