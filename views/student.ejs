@@ -15,6 +15,8 @@
             <th>Name</th>
             <th>Email</th>
             <th>Mobile No.</th>
+            <th>Actions</th>
+
         </tr>
         <% if(student.length>0){ %>
             <% for(let i=0; i<student.length; i++){ %>
@@ -23,6 +25,9 @@
                     <td><%- student[i].NAME %></td>
                     <td><%- student[i].EMAIL %></td>
                     <td><%- student[i].MOBILE %></td>
+                    <td>
+                        <a href="#" onclick="delete_record(this, <%- student[i].ID %> )">Delete</a>
+                    </td>
                 </tr>
                 <% } %>
                     <% }else{ %>
@@ -34,6 +39,21 @@
 </body>
 
 
+<script>
+    delete_record = (obj, id) => {
+        let req = new XMLHttpRequest();
+        req.open("GET", "/delete-student?id=" + id, true);
+        req.send();
 
+        req.onreadystatechange = () => {
+            if (req.readyState == 4 && req.status == 200) {
+                document.getElementById("response").innerHTML = req.responseText;
+                obj.parentElement.parentElement.remove();
+
+            }
+        }
+
+    }
+</script>
 
 </html>

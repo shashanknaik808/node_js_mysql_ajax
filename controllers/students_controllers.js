@@ -32,11 +32,23 @@ module.exports.insertValues = (req, res) => {
 module.exports.getStudent = (req, res) => {
 
     let sql = "SELECT * FROM STUDENTS";
-    
+
     connection.query(sql, (err, result) => {
         if (err) return console.log(err);
         res.render("student", { student: result });
 
-    })
+    });
 
-}
+};
+
+
+module.exports.deleteStudents = (req, res) => {
+    let sql = "DELETE FROM STUDENTS WHERE ID=?";
+    let id = req.query.id;
+    connection.query(sql, [id], (err, result) => {
+
+        if (err) return console.log(err);
+        res.send("Student record deleted");
+
+    });
+};
