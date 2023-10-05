@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Students Lists</title>
+</head>
+
+<body>
+    <h1>Search Here</h1>
+    <form onsubmit="return searching()">
+        <input type="search" name="name" placeholder="Search Name" id="name" onkeyup="searching()">
+        <input type="search" name="email" placeholder="Search Email" id="email" onkeyup="searching()">
+        <input type="search" name="mobile" placeholder="Search Mobile" id="mobile" onkeyup="searching()">
+        <input type="submit" value="Search">
+    </form>
+    <h1>Students List</h1>
+    <table border="1" width="100%">
+        <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile No.</th>
+
+
+        </tr>
+        <% if(student.length>0){ %>
+            <% for(let i=0; i<student.length; i++){ %>
+                <tr class="tr">
+                    <td><%- student[i].ID %></td>
+                    <td><%- student[i].NAME %></td>
+                    <td><%- student[i].EMAIL %></td>
+                    <td><%- student[i].MOBILE %></td>
+
+                </tr>
+                <% } %>
+                    <% }else{ %>
+                        <tr>
+                            <td>Data not found</td>
+                        </tr>
+                        <% } %>
+
+    </table>
+</body>
+<script>
+    searching = () => {
+        document.querySelectorAll(".tr").forEach((ele) => {
+            ele.remove()
+        });
+        let table = document.getElementsByName("table")[0];
+
+        let name = document.getElementsById('name').value;
+        let email = document.getElementsById('email').value;
+        let mobile = document.getElementsById('mobile').value;
+        // let id = document.getElementsById('input').value;
+        let req = new XMLHttpRequest();
+        req.open("GET", "/searching?name=" + name + "&email=" + email + "&mobile=" + mobile);
+        // req.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        req.send();
+        
+        return false;
+
+    }
+</script>
+
+</html>

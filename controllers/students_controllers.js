@@ -73,11 +73,21 @@ module.exports.updateStudentsDetails = (req, res) => {
     let id = req.body.id;
 
     let sql = "UPDATE STUDENTS SET NAME=?, EMAIL=?, MOBILE=? WHERE ID=?;";
-    
+
     connection.query(sql, [name, email, mobile, id], (err, result) => {
 
         if (err) return console.log(err);
         res.send('Student record updated');
+
+    });
+};
+
+
+module.exports.searchStudents = (req, res) => {
+    let sql = "SELECT * FROM STUDENTS";
+    connection.query(sql, (err, result) => {
+        if (err) return console.log(err);
+        res.render("search_students", { student: result });
 
     });
 };

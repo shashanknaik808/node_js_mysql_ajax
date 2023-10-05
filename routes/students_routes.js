@@ -5,7 +5,8 @@ const { homePage,
     getStudent,
     deleteStudents,
     updateStudents,
-    updateStudentsDetails } = require('../controllers/students_controllers.js');
+    updateStudentsDetails, 
+    searchStudents} = require('../controllers/students_controllers.js');
 
 const studentRouter = express.Router();
 
@@ -15,6 +16,8 @@ studentRouter.get('/student', getStudent);
 studentRouter.get('/delete-student', deleteStudents);
 studentRouter.get('/update-student', updateStudents);
 studentRouter.post('/update-student', updateStudentsDetails);
+studentRouter.get('/search-students', searchStudents);
+
 
 
 module.exports = studentRouter;
